@@ -62,7 +62,7 @@ function min_positive(a,b,c,d)
 }
 function stug(S1,S2)
 {
-    var percent=80; /// min percent of LCA required to consider the names as the same
+    var percent=90; /// min percent of LCS required to consider the names as the same
     var arr1=[],arr2=[],i;
     for(i=0;i<=S2.length;i++) arr2.push(0);
     for(i=1;i<=S1.length;i++)
