@@ -76,13 +76,14 @@ function stug(S1,S2)
         }
     }
     var p=arr2[S2.length];
-    var mi=Math.min(S1.length,S2.length),ma=Math.max(S1.length,S2.length);
+//    var mi=Math.min(S1.length,S2.length);
+    var ma=Math.max(S1.length,S2.length);
     var percentt=100.0*p/ma;
     return percentt>=percent;
 }
 function checkPersonExists(text, section, NameObject, DayObject, isYear)
 {
-    var i1=text.search(RegExp("==\\s*"+section+"\\s*=="));
+    var i1=text.search(new RegExp("==\\s*"+section+"\\s*=="));
     if(i1==-1) return false;
     var section_start,t=0;
     for(section_start=i1;t<4;section_start++)
@@ -91,10 +92,12 @@ function checkPersonExists(text, section, NameObject, DayObject, isYear)
     var section_end=min_positive( text.length, text.indexOf("==",section_start) ,
         text.indexOf("[[Կատեգորիա",section_start) , text.indexOf("<!--",section_start));
     var section_text=text.substring(section_start,section_end);
-    if(isYear) var date=DayObject.year.toString();
-    else var date=M_names[DayObject.month-1]+"\.\\s*"+DayObject.day.toString();
-    var ankap="\\*\\s*\\[\\[\\s*" + date + "\\s*\\]\\]\\s*-\\s*\\[\\[\\s*(.*)\\s*\\]\\]";
-    var re=RegExp(ankap,'g');
+    var event_date;
+    if(isYear) event_date=DayObject.year.toString();
+    else event_date=M_names[DayObject.month-1]+"\.\\s*"+DayObject.day.toString();
+    var ankap="\\*\\s*\\[\\[\\s*" + event_date + "\\s*\\]\\]\\s*-\\s*\\[\\[\\s*(.*)\\s*\\]\\]";
+    var re=new RegExp(ankap,'g');
+    var r1;
     while(1)
     {
         r1=re.exec(section_text);
