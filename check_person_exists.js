@@ -40,7 +40,7 @@ var t1="{{20-րդ դար}}_{{Տարին այլ օրացույցներով|{{PAGE
 ";
 var s1="Ծնունդներ";
 var NO1= {
-    name: "Վահան Հովհաննիսյան",
+    name: "ՎահանՀովհննիյան",
     description: "ttt"
 };
 var DO1= {
@@ -91,7 +91,6 @@ function checkPersonExists(text, section, NameObject, DayObject, isYear)
     var section_end=min_positive( text.length, text.indexOf("==",section_start) ,
         text.indexOf("[[Կատեգորիա",section_start) , text.indexOf("<!--",section_start));
     var section_text=text.substring(section_start,section_end);
-    var date;
     if(isYear) var date=DayObject.year.toString();
     else var date=M_names[DayObject.month-1]+"\.\\s*"+DayObject.day.toString();
     var ankap="\\*\\s*\\[\\[\\s*" + date + "\\s*\\]\\]\\s*-\\s*\\[\\[\\s*(.*)\\s*\\]\\]";
